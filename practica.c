@@ -47,7 +47,7 @@ int main(){
 				puts("gracias por usar el programa\n");
 				break;
 			default :
-				puts("Esta funcion no esta disponible\n\n");
+				puts("Esta funcion no esta disponible :/\n\n");
 		}
 	}while(salida!=3);
 	return 0;
