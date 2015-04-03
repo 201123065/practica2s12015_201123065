@@ -1,0 +1,7 @@
+#ifndef ____vector____
+#define ____vector____
+#include<stdio.h>
+
+
+
+#endif
