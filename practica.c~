@@ -35,7 +35,7 @@ vector_t* vector_crear(size_t tam_inicial){
 	return vector;
 }
 
-bool vector_agregar(vector_t* vector, size_t indice, void * elemento)
+void vector_agregar(vector_t* vector, size_t indice, void * elemento)
 {
 	if(indice<0 || indice >=vector->tam)return false;
 	vector->datos[indice]= elemento;
@@ -55,7 +55,7 @@ void* vector_obtener(vector_t*, size_t indice)
 
 
 
-bool vector_redim(vector_t* vector, size_t nuevotam)
+void vector_redim(vector_t* vector, size_t nuevotam)
 {
 	if(nuevotam<0 || vector->tam) return false;
 	void** datos_nuevos = realloc(vector->datos,nuevotam*sizeof(void*));
@@ -67,6 +67,11 @@ bool vector_redim(vector_t* vector, size_t nuevotam)
 }
 
 
+void vector_destruir(vector_t* vector)
+{
+	free(vector->datos);
+	free(vector);
+}
 
 
 #define MAX_TAM 24
@@ -140,6 +145,7 @@ int tam(char *salida)
 	}
 	while((c=getc(pf))!=EOF)
 	{
+	
 		if(c == '\n')
 		{
 			printf("\n");

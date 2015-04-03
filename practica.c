@@ -1,78 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h> 
-#include "vector.h"
-#include <stdbool.h>
 /*declaracion de funciones*/
 void menu();
 int tam(char *salida);
 /*fin de la declaracion*/
-
-struct vector{
-	size_t tam;
-	void** datos;
-};
-
-vector_t* vector_crear(size_t tam_inicial){
-
-	vector_t* vector = malloc(sizeof(vector_t));
-	if(vector==NULL)return NULL;
-
-	vector->tam =tam_inicial;
-
-	vector->datos = malloc(sizeof(void*)*tam_inicial);
-	if(vector->datos==NULL)
-	{
-		free(vector);
-		return NULL;
-	}
-
-	int i=0;
-	for(i=0;i<tam_inicial;i++)
-	{
-		vector->datos[i]=NULL;
-	}
-	return vector;
-}
-
-bool vector_agregar(vector_t* vector, size_t indice, void * elemento)
-{
-	if(indice<0 || indice >=vector->tam)return false;
-	vector->datos[indice]= elemento;
-	return true;
-}
-
-
-size_t vector_obtener_tam(vector_t* vector){
-	return vector->tam;
-}
-
-void* vector_obtener(vector_t*, size_t indice)
-{
-	if(indice<0 || indice >=vector->tam) return NULL;
-	return vector->datos[indice];
-}
-
-
-
-bool vector_redim(vector_t* vector, size_t nuevotam)
-{
-	if(nuevotam<0 || vector->tam) return false;
-	void** datos_nuevos = realloc(vector->datos,nuevotam*sizeof(void*));
-	if(datos_nuevos==NULL)return false;
-	free(vector->datos);
-	vector->datos = datos_nuevos;
-	vector->tam = nuevotam;
-	return true;
-}
-
-
-void vector_destruir(vector_t* vector)
-{
-	free(vector->datos);
-	free(vector);
-}
-
 
 #define MAX_TAM 24
 
@@ -88,9 +20,9 @@ int main(){
 		switch (salida)
 		{
 			case 1:
-				puts("carga de datos");	
+				puts("caso 1 accedido, carga de datos");	
 				char guia[50]="/home/marcosmayen/Desktop/";
-				puts("ingrese el nombre del archivo(escritorio)");
+				puts("por favor ingrese el nombre del archivo(este se debe encontrar en el escritorio)");
 				char arch[MAX_TAM];
 				scanf("%s",arch);
 				strcat(guia,arch);
@@ -102,12 +34,11 @@ int main(){
 				if(tVec==-1)
 				{
 					puts("_____________________________________");
-					puts("|ahun no has cargado nada al archivo|");
-					puts("|esta funcion no puede ser accedida |");
+					puts("|ahun no has cargado nada al archivo,|\n|esta funcion no puede ser accedida|");
 					puts("_____________________________________");
 				}
 				else{
-					puts("tiempo de uso");
+					puts("caso 2 accedido, de uso");
 					printf("%d",tVec);
 
 				}
