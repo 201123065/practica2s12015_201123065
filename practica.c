@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 /*declaracion de funciones*/
 void menu();
 int tam(char *salida);
@@ -65,7 +65,7 @@ void menu()
 
 
 /*determina el tam. de la cadena y si existe*/
-int tam(char *salida)
+int tVec(char *salida)
 {
 	int c,n=0;
 	FILE* pf;
